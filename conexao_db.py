@@ -43,6 +43,7 @@ while operacao not in (1, 2):
 if operacao == 1:
     resultado = insert()
     print (resultado)
+    print('New commit')
 else:
     resultado = select()
     print (resultado)
