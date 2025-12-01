@@ -59,6 +59,26 @@ def select_especifico():
     resultado = cursor.fetchall()
     return resultado
 
+def delete():
+    conexao = conexao_banco()
+    cursor = conexao.cursor()
+
+    os.system('cls')
+    opcoes = select()
+    print(opcoes)
+    condicao = int(input('Selecione o ID de quem quer apagar o Registro:'))
+    condicao = (condicao, )
+    query = 'DELETE FROM teste WHERE ID = %s'
+
+    cursor.execute(query, condicao)
+    conexao.commit()
+    os.system('cls')
+    print('Valor deletado com sucesso')
+
+    return opcoes
+
+
+
 os.system('cls')
 print("VOCÊ ESTA CONECTADO AO BANCO DE DADOS TOTVS \n")
 print("1 - Select")
@@ -88,6 +108,10 @@ elif operacao == 2:
 elif operacao == 3:
     resultado = insert()
     print(resultado)
+
+elif operacao == 5:
+    resultado = delete()
+    print(resultado) 
 
 
 
