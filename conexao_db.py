@@ -16,7 +16,7 @@ def insert():
     conexao = conexao_banco()
     cursor = conexao.cursor()
 
-    os.system('clear')
+    os.system('cls')
     id = int(input('Id:'))
     nome = input('Nome:')
     idade = int(input('Idade:'))
@@ -31,7 +31,7 @@ def insert():
 def select():
     conexao = conexao_banco()
     cursor = conexao.cursor()
-    os.system('clear')
+    os.system('cls')
     query = 'SELECT * FROM teste'
     cursor.execute(query)
     resultado = cursor.fetchall()
@@ -59,20 +59,35 @@ def select_especifico():
     resultado = cursor.fetchall()
     return resultado
 
+os.system('cls')
+print("VOCÊ ESTA CONECTADO AO BANCO DE DADOS TOTVS \n")
+print("1 - Select")
+print('2 - Select com condição')
+print("3 - Insert")
+print("4 - Update")
+print("5 - Delete")
+print("0 - Desconectar do banco de dados\n")
+operacao = int(input("Digite a operação que deseja executar:"))
 
 
-operacao = int(input(('Escolha a operação 1-Insert ou 2-Select:')))
+while operacao not in(0, 1, 2, 3, 4, 5):
+    operacao = int(input("Operacao invalida, digite a operação que deseja executar:"))
 
-while operacao not in (1, 2):
-    operacao = int(input(('Escolha a operação 1-Insert ou 2-Select:')))
+if operacao == 0:
+    os.system('cls')
+    print('Desconectado com sucesso')
 
-if operacao == 1:
-    resultado = insert()
-    print (resultado)
-    print('New commit')
-else:
+elif operacao == 1:
     resultado = select()
+    print(resultado)
 
+elif operacao == 2:
+    resultado = select_especifico()
+    print(resultado)
+
+elif operacao == 3:
+    resultado = insert()
+    print(resultado)
 
 
 
