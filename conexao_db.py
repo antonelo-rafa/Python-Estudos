@@ -67,9 +67,16 @@ def delete():
     opcoes = select()
     print(opcoes)
     condicao = int(input('Selecione o ID de quem quer apagar o Registro:'))
+
+    lista = []
+
+    for x in opcoes:
+        lista.append(x[0])
+        
+    while condicao not in lista:
+        condicao = int(input('Valor invalido, selecione o ID de quem quer apagar o Registro:'))
     condicao = (condicao, )
     query = 'DELETE FROM teste WHERE ID = %s'
-
     cursor.execute(query, condicao)
     conexao.commit()
     os.system('cls')
@@ -78,6 +85,7 @@ def delete():
     return opcoes
 
 
+    
 
 os.system('cls')
 print("VOCÊ ESTA CONECTADO AO BANCO DE DADOS TOTVS \n")
@@ -114,5 +122,4 @@ elif operacao == 5:
     print(resultado) 
 
 
-
-
+delete()
